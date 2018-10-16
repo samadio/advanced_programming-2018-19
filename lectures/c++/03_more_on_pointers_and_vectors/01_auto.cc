@@ -17,6 +17,10 @@ T* init(const std::size_t l) {
 
 #endif
 
+
+//template <class T>
+//void debug(T);
+
 int main() {
   auto b = true;          // a bool
   auto ch = 'x';          // a char
@@ -29,8 +33,10 @@ int main() {
   for (auto i = 0; i < 7; ++i)
     std::cout << i << std::endl;
 
-  auto pb = &b;  // guess what.. How can I know?
-
+  auto pb = &b;  // guess what.. How can I know? If I want to ask the compiler what kind of variable this is
+	
+ //	debug(pb);
+	
   auto ps = init<double>(11);
   delete[] ps;
   return 0;

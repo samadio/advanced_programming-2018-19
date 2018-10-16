@@ -11,7 +11,7 @@ int main() {
 
   char** ppc;
 
-  int* ap[7];
+  int* ap[7];	//array of pointer of size 7: you can do int** p=ap;
 
   void* pv{pi};
   // *pv; // we cannot dereference void*
@@ -22,7 +22,7 @@ int main() {
   pv = ap;
   pv = pi;
 
-  pi = nullptr;
+  pi = nullptr;	//null pointer: it empties a pointer
   ppc = nullptr;
   // ap = nullptr;  // error, why?
   ap[0] = nullptr;
@@ -33,11 +33,16 @@ int main() {
 
   // pi = NULL; // please don't do this
 
+  double* da{new double[5]{}};  
+  delete[]da; //it releases the heap memory, but the pointer is still there: dangling pointer
+  da=nullptr;  //difference between pointer and reference: pointer can point to nothing, reference has to be referred to something
+
+
   if (pi != nullptr)
     std::cout << "pi is not nullptr and I can dereference it " << *pi
               << std::endl;
 
-  if (pi)
+  if (pi) //true when pi!=nullpointer
     std::cout << "pi is not nullptr and I can dereference it " << *pi
               << std::endl;
 
@@ -58,7 +63,7 @@ int main() {
   else
     std::cout << "different\n";
 
-  int (*fp)(const char*);
+  int (*fp)(const char*);  //pointer to a function which returns an int and takes a const char as argument.Be careful about (*fp). Parentesys are mandatory in order to avoid compiler get confused. With pointer to a function u can feed a function with a function:integral(sin(x))
   fp = func1;
 
   fp("hello");
@@ -66,7 +71,7 @@ int main() {
   fp = &func2;
   fp("world");
 
-  // fp = func3; // error: wrong signature
+  // fp = func3; // error: wrong signature: func3 need void result, fp is pointer to integer
   auto xx = func3;
 
   xx("auto");

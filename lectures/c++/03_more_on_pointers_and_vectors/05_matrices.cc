@@ -3,13 +3,12 @@
 
 void print_ma(int m[][5], int dim1);  // ugly and not flexible
 // void print_ma(int m[][], int dim1, int dim2); // error second
-// dimension must be
-// knwon at compile time
+// dimension must be known at compile time
 
 void print_ma(int* p, int row, int col);  // the only possible solution
 
 int main() {
-  int ma[6][5];  // matrix: 6 rows, 5 columns each
+  int ma[6][5];  // matrix: 6 rows, 5 columns each: matrix in the stack
 
   for (int i = 0; i < 6; ++i)
     for (int j = 0; j < 5; ++j)

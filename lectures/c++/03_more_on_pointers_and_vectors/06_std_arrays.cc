@@ -9,7 +9,7 @@ int main() {
   std::array<int, 4> b{a};  // I can copy element-wise from another std::array
                             // this is not possible with plain built-in arrays
   b = a;
-  for (auto x : a)
+  for (auto x : a)	//range like python
     std::cout << x << " ";
   std::cout << std::endl;
 
@@ -27,7 +27,7 @@ int main() {
     std::cout << x << " ";
   std::cout << std::endl;
 
-  for (auto& x : a)
+  for (auto& x : a)		//reference in order to modify: multiply by 10
     x *= 10;
 
   for (auto i = 0u; i < a.size(); ++i)

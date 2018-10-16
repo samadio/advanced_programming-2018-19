@@ -8,16 +8,15 @@ int main() {
   int* pi{&a};
 
   const int* pc = &a;
-  // *pc = 7; 	// error
+  // *pc = 7; 	// error: I can change its content.
   a = 15;  // I can obviously change a
 
-  int* const cp = &a;
+  int* const cp = &a;   //you can change the value it contains but u cant change its address
   a = b;
   *cp = 33;
   // cp = &b;   // error
 
-  const int* const cpc = &a;  // points to a fixed memory location
-  // and cannot change it
+  const int* const cpc = &a;  // points to a fixed memory location and cannot change it
   // *cpc = 0;  // error
   // cpc = &n;  // error
   a = 99;
@@ -30,7 +29,7 @@ int main() {
 
 template <typename T>
 void print_sentinel(const T* a, const std::size_t l) {
-  const T* const end{a + l};
-  for (; a != end; ++a)
-    std::cout << *a << std::endl;
+  const T* const end{a + l}; //it's the element right after the end of the vector a and cannot change nor in value or address
+  for (; a != end; ++a) //a=a+1
+    std::cout << *a << std::endl; //a[i]=*(&a[0]+i)==*(a+i)
 }
