@@ -33,10 +33,16 @@ int main() {
 
   // pi = NULL; // please don't do this
 
+<<<<<<< HEAD
   double* da{new double[5]{}};  
   delete[]da; //it releases the heap memory, but the pointer is still there: dangling pointer
   da=nullptr;  //difference between pointer and reference: pointer can point to nothing, reference has to be referred to something
 
+=======
+  double* da{new double[5]{}};
+  delete[] da;  // dangling pointer
+  da = nullptr;
+>>>>>>> 5217ca0ea85ae8d41d332c4684bbec342a9475c8
 
   if (pi != nullptr)
     std::cout << "pi is not nullptr and I can dereference it " << *pi
