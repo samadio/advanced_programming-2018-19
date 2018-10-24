@@ -9,17 +9,26 @@ class Vector {
  public:
   Vector(const std::size_t size) : elem{new num[size]}, _size{size} {}
 
-  // automatically release the acquired memory
+  // automatically release the acquired memory:Resource Acquisition Is Initialisation
   ~Vector() { delete[] elem; }
 
+
   // try to remove the const and recompile
-  std::size_t size() const { return _size; }
+  std::size_t size() const { return _size; } //it's a function in class Vector which returns his size (2nd parameter)
+
 
   num& operator[](const std::size_t i) { return elem[i]; }
 
   // try to comment this line and recompile
   const num& operator[](const std::size_t i) const { return elem[i]; }
 };
+
+
+
+
+
+
+
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const Vector<T>& v) {

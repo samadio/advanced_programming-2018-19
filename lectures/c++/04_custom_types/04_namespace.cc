@@ -38,6 +38,8 @@ namespace choose_a_name {
 }  // namespace choose_a_name
 
 using namespace choose_a_name;
+using std::cout;
+using std::endl; //u can even import only a single function
 
 void nested::hello3() {
   std::cout << "hello3 from nested\n"

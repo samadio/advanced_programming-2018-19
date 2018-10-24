@@ -1,20 +1,20 @@
 #include <iostream>
 #include <string>
 
-struct Foo {
+struct Foo {		//constructors don't have return type and have the same name of the class
   int _i;
   double _d;
   std::string _s;
 
   Foo(const int i, const double d,
-      const std::string& s);  // custom constructor
-
-  Foo();  // default constructor
+      const std::string& s);  // custom constructor: 
+      
+  Foo();  // default constructor: no argument
 
   ~Foo();  // destructor
 };
 
-Foo::Foo(const int i, const double d, const std::string& s)
+Foo::Foo(const int i, const double d, const std::string& s) //this is also the constructor, declared again outside
     : _i{i},
       _d{d},
       _s{s}
@@ -37,10 +37,18 @@ Foo::~Foo() {
   std::cout << "dtor\n";
 }
 
-std::ostream& operator<<(std::ostream& os, const Foo& f) {
+
+
+//OPERATOR OVERLOADING
+std::ostream& operator<<(std::ostream& os, const Foo& f) {	//operator are similar to functions, ostream is a class in the std namespace
   os << f._i << " " << f._d << " " << f._s << std::endl;
   return os;
 }
+
+
+
+
+
 
 int main() {
   Foo f0;    // call default ctor
@@ -50,6 +58,6 @@ int main() {
   Foo f2{8, 2.2, "hello"};
   std::cout << "f0: " << f0 << "f1: " << f1 << "f2: " << f2 << std::endl;
 
-  // the destructor is called when the variable goes out of scope
+  // the destructor is automatically called when the variable goes out of scope
   return 0;
 }
