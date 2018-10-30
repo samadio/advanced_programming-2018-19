@@ -35,6 +35,7 @@ int main() {
 
 /*Why private?We want consistent object: we don't want the user to interfere.
 */
+
   Point_s* p = &ps;		//pointer to object
   p->x = 0.0;		//I access the pointer through ->
   p->print();

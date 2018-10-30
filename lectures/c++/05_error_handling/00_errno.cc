@@ -6,3 +6,6 @@ int main() {
   std::cout << d << " " << errno << std::endl;
   return 0;
 }
+
+
+//error handling:

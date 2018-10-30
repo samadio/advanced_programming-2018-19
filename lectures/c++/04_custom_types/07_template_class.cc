@@ -7,7 +7,7 @@ class Vector {
   std::size_t _size;
 
  public:
-  Vector(const std::size_t size) : elem{new num[size]}, _size{size} {}
+  Vector(const std::size_t size) : elem{new num[size]}, _size{size} {}		//custom contructor: reserves memory
 
   // automatically release the acquired memory:Resource Acquisition Is Initialisation
   ~Vector() { delete[] elem; }
@@ -54,7 +54,7 @@ int main() {
 
   std::cout << *pv << std::endl;
 
-  Vector<double>& rv{v};
+  Vector<double>& rv{v};  //it's a reference, so there's no need to dereference
 
   rv[5] = 555;
 

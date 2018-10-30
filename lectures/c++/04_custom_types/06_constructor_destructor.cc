@@ -1,7 +1,10 @@
 #include <iostream>
 #include <string>
 
-struct Foo {		//constructors don't have return type and have the same name of the class
+
+//constructors don't have return type and have the same name of the class
+
+struct Foo {		//this is struct declaration
   int _i;
   double _d;
   std::string _s;
@@ -14,7 +17,7 @@ struct Foo {		//constructors don't have return type and have the same name of th
   ~Foo();  // destructor
 };
 
-Foo::Foo(const int i, const double d, const std::string& s) //this is also the constructor, declared again outside
+Foo::Foo(const int i, const double d, const std::string& s) //this is the custom constructor, declared outside
     : _i{i},
       _d{d},
       _s{s}
@@ -29,11 +32,11 @@ Foo::Foo(const int i, const double d, const std::string& s) //this is also the c
   // been constructed
 }
 
-Foo::Foo() {
+Foo::Foo() {		//this is default constructor
   std::cout << "default ctor\n";
 }
 
-Foo::~Foo() {
+Foo::~Foo() {		//this is default destructor
   std::cout << "dtor\n";
 }
 
