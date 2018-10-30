@@ -8,7 +8,7 @@
 double square_root(const double d);
 
 struct Square_root_invalid {
-  std::string message;
+  std::string message;		//a string called message
   Square_root_invalid(const std::string& s) : message{s} {}
 };
 
@@ -20,10 +20,10 @@ int main() {
     auto d = square_root(number);
     std::cout << "square root of " << number << " is " << d << '\n';
     return 0;
-  } catch (const Square_root_invalid& s) {
+  } catch (const Square_root_invalid& s) { //the error is referenced by s and s.message can show the error coded by developer
     std::cerr << s.message << std::endl;
     return 1;
-  } catch (...) {
+  } catch (...) { //in every other case
     std::cerr << "Unknown exception. Aborting.\n";
     return 3;
   }
@@ -33,7 +33,7 @@ double square_root(const double d) {
   // test the pre-conditions
   if (d < 0)
     throw Square_root_invalid{"Cannot handle negative numbers. You gave me " +
-                              std::to_string(d)};
+                              std::to_string(d)}; //this is what is throwed from developer to usr, s
   if (d > 50)
     throw Square_root_invalid{
         "The argument of square_root must be lower than 50. You gave me " +

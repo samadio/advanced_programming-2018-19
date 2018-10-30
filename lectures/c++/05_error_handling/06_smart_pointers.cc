@@ -3,6 +3,11 @@
 
 #include "ap_error.h"
 
+/*
+uniqpointer uses ownership: he's the only one who can manage its memory space, so the destructor call is managed automatically. It can be used exactly like raw pointers and even from the HPC point of view is the same.
+Avoid repetitions and complications
+*/
+
 class Vector {
   std::unique_ptr<double[]> elem;
 
@@ -30,7 +35,7 @@ class ManyResources {
 
 int main() {
   try {
-    std::unique_ptr<int[]> up{new int[7]};
+    std::unique_ptr<int[]> up{new int[7]}; 
     ManyResources mr;
 
   } catch (const std::exception& e) {

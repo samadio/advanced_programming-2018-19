@@ -25,7 +25,7 @@ int main() {
     std::cerr << e.message << std::endl;
     return 2;
   } catch (const std::runtime_error& e) {
-    std::cerr << e.what() << std::endl;
+    std::cerr << e.what() << std::endl;	//what() is a function defined in the std::runtime_error class that prints a message
     return 1;
   } catch (...) {
     std::cerr << "Unknown exception. Aborting.\n";
@@ -37,8 +37,8 @@ double square_root(const double d) {
   // test the pre-conditions
 
   AP_ERROR(d >= 0 && d <= 50, Square_root_invalid)
-      << "In our library the argument must be positive and less or equal than "
-         "50.\n";
+      << "In our library the argument must be positive and less or equal than " //this gives you where exactly the error occurs:
+         "50.\n";				//file,function and line
 
   // AP_ERROR(d >= 0 && d <= 50) << "In our library the argument must be
   // positive "

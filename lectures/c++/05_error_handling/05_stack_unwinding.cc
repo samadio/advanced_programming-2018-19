@@ -3,6 +3,16 @@
 
 #include "ap_error.h"
 
+/*
+Stack unwiding procedure: if an exception is thrown inside a try, the line following the one who has thrown are not executed, so destructor is not called. So u have to delete things even in the case an exception occurs.
+
+Destructor is called only if constructor made no error or if the object has remained in a valid state.
+if there's a problem using the function new, it throws an exception.
+a constructor can throw an exception, the destructor NOT.
+noexcept is an option to tell the compiler that no exception will be thrown inside a class/function. What if it actually throw? CRASH. the program exit.
+
+*/
+
 class Foo {
  public:
   Foo() { std::cout << "Foo\n"; }
@@ -40,7 +50,7 @@ class ManyResources {
       AP_ERROR(false) << "Error in ManyResources ctor.\n";
     } catch (...) {
       delete[] ptr;  // <----
-      throw;
+      throw;		//the same ball will be rethrown
     }
   }
 
@@ -56,7 +66,7 @@ int main() {
   try {
     // int * raw_ptr=new int[7]; // wrong because raw_ptr would not be visible
     // inside the catch-clause
-    ManyResources mr;
+    ManyResources mr;	//if something is thrown here, so bar is not construted
     Bar b;
 
   } catch (const std::exception& e) {

@@ -8,4 +8,4 @@ int main() {
 }
 
 
-//error handling:
+//error handling: if I call sqrt(-9) no complain, but d is a NaN. So how can I check? using a macro errno, which is !=0 when something bad happens: here we have errno=33. 

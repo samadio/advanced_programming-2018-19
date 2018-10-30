@@ -1,7 +1,7 @@
 #include <cmath>
 #include <iostream>
 
-// implment a square root function that "deals with" negative
+// implement a square root function that "deals with" negative
 // numbers. Moreover according to the logic of the program, d should
 // never be greater than 50
 double square_root(const double d);
@@ -9,16 +9,16 @@ double square_root(const double d);
 struct Negative_number {};
 
 struct Bigger_than_expected {};
-
+														//try & catch:for exceptional events
 int main() {
-  try {
+  try {									
     std::cout << "please insert a number\n";
     double number;
     std::cin >> number;
     auto d = square_root(number);
     std::cout << "square root of " << number << " is " << d << '\n';
     return 0;
-  } catch (const Negative_number) {
+  } catch (const Negative_number) {		//if a Negative_number has been throwed, this happens, and the usr is left handling
     std::cerr << "The square root of a negative number is a complex number.\n"
                  "square_root() is "
               << "limited to handle positive double numbers.\n";
@@ -38,8 +38,10 @@ int main() {
 double square_root(const double d) {
   // test the pre-conditions
   if (d < 0)
-    throw Negative_number{};
+    throw Negative_number{};		//throw an object 
   if (d > 50)
     throw Bigger_than_expected{};
   return sqrt(d);
 }
+
+//hat function for std::vector & array throws something

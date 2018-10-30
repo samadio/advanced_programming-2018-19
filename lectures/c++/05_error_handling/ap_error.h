@@ -1,4 +1,4 @@
-#ifndef __AP_ERROR_H__
+#ifndef __AP_ERROR_H__ //if this symbol is not defined, define it
 #define __AP_ERROR_H__
 
 #include <iostream>
