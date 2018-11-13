@@ -4,6 +4,11 @@
 
 #include "ap_error.h"
 
+/*
+
+We want to have a deep copy between 2 vectors, so that they point to different locations and are not entangled
+
+*/
 template <typename num>
 class Vector {
   std::size_t _size;
@@ -12,7 +17,7 @@ class Vector {
  public:
   // custom ctor
   explicit Vector(const std::size_t length)
-      : _size{length}, elem{new num[length]{}} {
+      : _size{length}, elem{new num[length]{}} { //the {} after length sets all the elemnts to 0
     std::cout << "custom ctor\n";
   }
 
@@ -27,7 +32,7 @@ class Vector {
   // Vector() : _size{}, elem{} { std::cout << "default ctor\n"; } // this could
   // be better Vector() = default;
 
-  ~Vector() noexcept = default;
+  ~Vector() noexcept = default;		//default destructor, even if u should implement a custom destructor
 
   /////////////////////////
   // copy semantics
@@ -52,8 +57,8 @@ class Vector {
   // Vector(Vector&& v) noexcept = default; // works perfectly
 
   // move assignment
-  Vector& operator=(Vector&& v) noexcept {
-    std::cout << "move assignment\n";
+  Vector& operator=(Vector&& v) noexcept {		//noexcept because moving does not use further memory:it was allocated before
+    std::cout << "move assignment\n";			  //so I'm sure it will throw no exception, there are no call to new function
     _size = std::move(v._size);
     elem = std::move(v.elem);
     return *this;
@@ -81,7 +86,7 @@ class Vector {
 template <typename num>
 Vector<num>::Vector(const Vector& v) : _size{v._size}, elem{new num[_size]} {
   std::cout << "copy ctor\n";
-  std::copy(v.begin(), v.end(), begin());
+  std::copy(v.begin(), v.end(), begin());  //copy from begin of v to end and write it from the 1st mem loc of the current object
 }
 
 // copy assignment
@@ -190,3 +195,13 @@ int main() {
     return 1;
   }
 }
+
+/*
+every class has on object that points to itself, that is called *this
+
+L-value is what we usually use
+copy needs R-value objects: R-value are temporary: a=b means b is called and trashed, a remains
+
+auto b=Vector<int>{3};  Vector is on the left side so move can be used after Vector<int>{3} was constructed
+
+*/

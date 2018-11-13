@@ -33,9 +33,9 @@ int main() {
 
 double square_root(const double d) {
   // test the pre-conditions
-  assert(d >= 0 && d <= 50);  // provided by C, no execptions: simply exit the program witout any customized message
+//  assert(d >= 0 && d <= 50);  // provided by C, no execptions: simply exit the program witout any customized message
 
-// AP_ASSERT(d>=0 && d<=50) <<  "d should be in the range [0,50]"; //it's a macro that works like an assert (to save time with -DNDEBUG), but can give customized message and use try and catch
+ AP_ASSERT(d>=0 && d<=50) <<  "d should be in the range [0,50]"; //it's a macro that works like an assert (to save time with -DNDEBUG), but can give customized message and use try and catch
 
   // AP_ASSERT_IN_RANGE(d,0,50);
   return sqrt(d);

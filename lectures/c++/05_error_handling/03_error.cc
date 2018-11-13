@@ -10,7 +10,7 @@ double square_root(const double d);
 
 struct Square_root_invalid {
   std::string message;
-  Square_root_invalid(const std::string& s) : message{s} {}
+  Square_root_invalid(const std::string& s) : message{s} {} 	//custom constructor
 };
 
 int main() {

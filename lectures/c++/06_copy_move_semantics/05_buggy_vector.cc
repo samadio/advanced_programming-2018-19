@@ -25,7 +25,7 @@ class Vector {
 
 int main() {
   Vector<double> v1{7};
-  // Vector<double> v2{v1}; // default copy ctor calls a deleted function by
-  // std::unique_ptr
+  // Vector<double> v2{v1}; // default copy ctor calls a function deleted in the class std::unique_ptr 
+  //the default cpy ctor for unique ptr has been deleted in order to implement the concept of unique ownership.
   return 0;
 }

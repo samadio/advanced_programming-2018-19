@@ -1,7 +1,7 @@
 #include <iostream>
 
 struct X {
-  int a = 5;  // in-class initialization
+  int a = 5;  // in-class initialization: assign a default value which will be used by the constructor
   double b = 3.3;
   char c = 'a';
   // X() = default;  // in-class initializers are used by the constructors
@@ -11,7 +11,8 @@ struct Y {
   int a = 77;
   double b;
   char c = 'a';
-  Y() : a{5} {}  // what it is written here wins the in-class initialization
+  Y() : a{5} {}  // this default custom ctor wins over in-class initialization. It's still a default ctor because it can be used
+  			  // without arguments
   // Y() = default;
 };
 

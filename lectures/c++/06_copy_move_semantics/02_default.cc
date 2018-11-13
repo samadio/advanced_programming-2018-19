@@ -16,7 +16,7 @@ int main() {
                             // directly initialize the members. Note
                             // that I need access (i.e. they must be
                             // public)
-  // it is called aggregate initialization (see
+  // it is called aggregate initialization(see
   // https://en.cppreference.com/w/cpp/language/aggregate_initialization)
 
   S s3{};  // calls {} on each member: S s3 { {}, {}, {} };
@@ -25,7 +25,13 @@ int main() {
   std::cout << s2.a << "--" << s2.b << "--" << s2.s << "\n";
   std::cout << s3.a << "--" << s3.b << "--" << s3.s << "\n";
 
-  // S s4(s2); // compiler error
-
+//  S s4(s2); // compiler error
+	//if u try to run program multiple times, s2 and s3 do not change, s1 does
   return 0;
 }
+
+/*
+
+The copy constructor is a constructor which creates an object by initializing it with an object of the same class, which has been created previously. The copy constructor is used to − Initialize one object from another of the same type. Copy an object to pass it as an argument to a function.
+
+*/

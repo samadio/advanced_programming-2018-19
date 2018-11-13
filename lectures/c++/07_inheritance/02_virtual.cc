@@ -20,7 +20,7 @@ struct Animal {
 };
 
 struct Dog : public Animal {
-  void speak() const noexcept override { std::cout << "Bau\n"; }
+  void speak() const noexcept override { std::cout << "Bau\n"; } //compiler checks if this function exists in parent
   Dog() = default;
   Dog(const unsigned int a, const double d) : Animal{a, d} {}
 };
@@ -41,8 +41,8 @@ inline void newline() noexcept {
   std::cout << std::endl;
 }
 
-void print_animal(const Animal& a) noexcept {
-  std::cout << "throught ref\n";
+void print_animal(const Animal& a) noexcept { //no templates here, because T generate all the animal function, so I have 10^100
+  std::cout << "throught ref\n";			 //animals, I'd generate all of them even if I need only 3 (binary bigger)
   a.info();
   a.speak();
 }
@@ -73,3 +73,9 @@ int main() {
     return 1;
   }
 }
+
+/*
+
+virtual is needed to have a dinamic polymorphism
+
+/*

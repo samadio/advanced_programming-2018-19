@@ -30,7 +30,7 @@ struct Snake {
   void info() const noexcept {
     _animal.info();
     std::cout << "dangerous:\t" << (dangerous ? "true" : "false") << std::endl;
-  }
+  }						    //condition ? if true : if false
   void speak() const noexcept { std::cout << "ssss\n"; }
 };
 
@@ -82,3 +82,9 @@ int main() {
     return 1;
   }
 }
+
+/*
+
+Dog from a conceptual point of view: dog HAS NOT A animal, dog IS an animal
+Furthermore if I have to define different type of dogs, 4 each I have to define info() and speak(), which would be the same for everyone. So I want to avoid code duplication and use inheritance
+*/

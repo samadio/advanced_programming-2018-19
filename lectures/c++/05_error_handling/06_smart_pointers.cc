@@ -4,7 +4,7 @@
 #include "ap_error.h"
 
 /*
-uniqpointer uses ownership: he's the only one who can manage its memory space, so the destructor call is managed automatically. It can be used exactly like raw pointers and even from the HPC point of view is the same.
+unique_ptr(pointer) uses ownership: he's the only one who can manage its memory space, so the destructor call is managed automatically. It can be used exactly like raw pointers and even from the HPC point of view is the same.
 Avoid repetitions and complications
 */
 
@@ -17,7 +17,7 @@ class Vector {
   }
   double& operator[](const unsigned int i) {
     return elem[i];
-  }  // you can use smart pointers almost like raw pointers
+  }  // you can use unique pointers almost like raw pointers
   ~Vector() noexcept { std::cout << "~Vector\n"; }
 };
 

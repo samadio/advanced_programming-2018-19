@@ -1,6 +1,13 @@
 #include <ap_error.h>
 #include <iostream>
 
+/*
+Suppose I have a vector of animals for which I want to decide how many people will be required to feed each. U cannot implement a function for each class of animals. So u'll know it t run time
+
+line76!
+Dynamic cast: cast on run time != static cast
+*/
+
 class Animal {
   unsigned int age;
   double weight;
@@ -66,7 +73,7 @@ void print_animal(const Animal& a) noexcept {
   a.info();
   a.speak();
   // if got a DangerousSnake call 911
-  if (dynamic_cast<const DangerousSnake*>(&a))
+  if (dynamic_cast<const DangerousSnake*>(&a))					//HERE: dynamic cast. TRUE if it's the right type, FALSE
     std::cout << "call 911...\n";
 }
 
@@ -80,7 +87,7 @@ int main() {
     // Animal* p = new DangerousSnake{1, 2.3};
     Animal* p = new Anaconda{1, 2.3};
 
-    print_animal(*p);
+    print_animal(*p);	//calls 911
     delete p;
 
     return 0;
@@ -89,3 +96,9 @@ int main() {
     return 1;
   }
 }
+
+/*
+
+Design pattern are made by combination of inheritance and object composition. They're patterns who chan simplify a lot ur development. One of them is the ITERATOR
+
+*/

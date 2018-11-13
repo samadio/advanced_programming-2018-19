@@ -3,7 +3,7 @@ CXX = c++
 CXXFLAGS = -I include -g -std=c++11 -Wall -Wextra -I ../../05_error_handling/
 
 SRC= main.cc src/dog.cc src/animal.cc src/snake.cc src/helper_functions.cc
-OBJ=$(SRC:.cc=.o)
+OBJ=$(SRC:.cc=.o) # lot of source file converge to an object file
 INC = include/animal.h  include/dog.h  include/helper_functions.h  include/snake.h
 
 VPATH = ../05_error_handling

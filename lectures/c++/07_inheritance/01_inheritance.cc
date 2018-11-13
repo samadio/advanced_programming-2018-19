@@ -17,29 +17,36 @@ struct Animal {
   }
 };
 
-struct Dog : public Animal {
+
+
+struct Dog : public Animal {  //stands for Dog is an Animal, so dog (CHILD/DERIVED CLASS) inherits the interface (all the 							//public memebers and functions) of Animal (PARENT/DERIVED CLASS), so Child class is greater in
+						//memory than the parent, because it inherits
+
   void speak() const noexcept { std::cout << "Bau\n"; }
   Dog() noexcept = default;
-  Dog(const unsigned int a, const double d) : Animal{a, d} {}
+  Dog(const unsigned int a, const double d) : Animal{a, d} {} //parent constructor not inherited!unless expicitely required
 };
+
+
+
 
 struct Snake : public Animal {
   bool dangerous;
   Snake(const unsigned int a, const double w, const bool b)
-      : Animal{a, w}, dangerous{b} {}
+      : Animal{a, w}, dangerous{b} {} //u have to fill the variables in order: first parents then child
   Snake(const bool b) noexcept : Animal{}, dangerous{b} {}
   void info() const noexcept {
     Animal::info();
     std::cout << "dangerous:\t" << (dangerous ? "true" : "false") << std::endl;
   }
-  void speak() const noexcept { std::cout << "ssss\n"; }
+  void speak() const noexcept { std::cout << "ssss\n"; } //we're HIDING the animals speak function, not overwriting
 };
 
 inline void newline() noexcept {
   std::cout << std::endl;
 }
 
-// run-time (dynamic) polymorphism
+// run-time (dynamic) polymorphism. U have to implement in order to get hered
 void print_animal(const Animal& a) noexcept {
   std::cout << "through ref\n";
   a.info();
@@ -95,3 +102,9 @@ int main() {
     return 1;
   }
 }
+
+/*
+
+Polymorphism= a class can be seen as a different one.
+
+*/

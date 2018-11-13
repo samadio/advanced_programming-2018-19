@@ -1,8 +1,13 @@
 #include <ap_error.h>
 #include <iostream>
 
+/*
+
+abstract class if u define a function as pure virtual: so u cant declare an "Animal a"
+If a child do not override that function, the child is itself abstract. This way u force user to override
+*/
 class Animal {
-  unsigned int age;
+  unsigned int age; //better a parent not to have data or to have it private, so that children cannot mess up
   double weight;
 
  public:
@@ -10,9 +15,9 @@ class Animal {
     AP_ERROR_GE(weight, 0) << "invalid weight!\n";
   }
 
-  Animal() : Animal{0, 0} {}  // delegating constructor
+  Animal() : Animal{0, 0} {}  // delegating constructor: pass the arguments to another one, where all the checks are done
 
-  virtual void speak() const = 0;
+  virtual void speak() const = 0;		//THIS MAKE ANIMAL ABSTRACT
   virtual void info() const noexcept {
     std::cout << "age:\t" << age << '\n' << "weight:\t" << weight << '\n';
   }
@@ -23,8 +28,9 @@ class Animal {
 class Dog : public Animal {
  public:
   void speak() const noexcept override { std::cout << "Bau\n"; }
-  Dog() = default;
-  Dog(const unsigned int a, const double d) : Animal{a, d} {}
+  //Dog() = default;		//this and the following is code duplication: it's the same of the parent
+  //Dog(const unsigned int a, const double d) : Animal{a, d} {}
+  using Animal::Animal; //populating the child with the same constructor of the parent
 };
 
 class Snake : public Animal {
@@ -60,7 +66,7 @@ class NonDangerousSnake : public Snake {
 
 struct Python : public NonDangerousSnake {};
 
-using Anaconda = DangerousSnake;
+using Anaconda = DangerousSnake; //using can be templated
 
 void print_animal(const Animal& a) noexcept {
   std::cout << "throught ref\n";
