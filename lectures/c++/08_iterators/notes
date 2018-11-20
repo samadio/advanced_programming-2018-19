@@ -1,0 +1,17 @@
+DATA HIDING: you make your class easier to update, mantain and note screwed up by some stupid user (yourself included)
+Linked List: sequence of block with a pointer to the next block, and the last is a nullpointer.
+
+We will call head the pointer of the first block. We choose to say that a list HAS A block, so we define a class BLOCK.
+Should the user be able to use the blocks? No: even if u want to push_back someting, the user just want to add a value, not a block: so the push_back(double!=block).
+So u want even the block class to be private to the user.
+
+The block should have the same template of the list, so in order to have the same template in both, I should define the class Node inside the List class
+
+all the push methods are the same in one case: when u have to create the first element of the list, i.e. when head=nullptr.
+Head=nullptr because it is not a built in type, so when it is declared it has been constructed and initialised at nullptr.
+
+ITERATOR: is a generalised pointer. Today:simple forward iterator. It allows u to move from one class to another overloading the operators *(), such that *I=value, I-> to access it and being parallel to pointers, I++ which will return another iterator: pre is better. U can even define ++(int), which is POST. But usually the first is better.
+Last but not least, u should overwrite ==
+Summary: ++,==,!=, *, ->
+
+
