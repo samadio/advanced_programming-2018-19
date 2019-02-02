@@ -4,7 +4,7 @@ struct Foo {
   static double s;  // must be defined outside the class
   // static int si = 0; // error: must be const
   static const int sc = 9;  // only integral types are allowed
-  // static const double sd;  // error
+   static const double sd;  //=10->error
   int i;
 };
 
