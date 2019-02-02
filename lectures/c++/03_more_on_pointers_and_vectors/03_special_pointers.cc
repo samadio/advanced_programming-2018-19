@@ -15,7 +15,7 @@ int main() {
 
   void* pv{pi};
   // *pv; // we cannot dereference void*
-  // ++pv; // we cannot increment. Why?
+  // ++pv; // we cannot increment. Why? operator + not defined between void and integer!
   int* pi2{static_cast<int*>(pv)};
 
   pv = ppc;

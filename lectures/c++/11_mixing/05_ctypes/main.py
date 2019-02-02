@@ -8,8 +8,8 @@ dso.hello()
 
 
 ## strings
-dso.repeat.argtypes = [c_char_p]
-dso.repeat.restype = c_int
+dso.repeat.argtypes = [c_char_p] #python has to know what is the type of the arguments in order to convert them 
+dso.repeat.restype = c_int #type of  the result
 res = dso.repeat(b"ctypes are great") # use b to pass read-only variable
 
 buf = create_string_buffer(b"this could be modified")
@@ -45,7 +45,7 @@ dso.use_by_value(param) # default is by value
 param.i=77
 param.name=b"ciao ciao"
 
-#dso.use_by_reference.argtypes = [POINTER(data)]
+#dso.use_by_reference.argtypes = [POINTER(data)] #equivalent to below
 dso.use_by_reference(byref(param))
 
 dso.set_energy.argtypes = [POINTER(data), c_double]

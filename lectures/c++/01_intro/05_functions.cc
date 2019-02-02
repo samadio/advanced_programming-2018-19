@@ -25,6 +25,8 @@ int main() {
   b = 7;
   std::swap(a, b);
   std::cout << "stl:\texpected 7 3 --> " << a << " " << b << "\n";
+  
+  swap_cxx(1,2);
 }
 
 void buggy_swap(int a, int b) {

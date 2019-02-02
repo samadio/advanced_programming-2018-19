@@ -1,6 +1,6 @@
 #include <iostream>
 
-void swap(int a, int b);
+void swap(int& a, int& b);
 
 int main() {
   int x{3}, y{7};
@@ -10,7 +10,7 @@ int main() {
   return 0;
 }
 
-void swap(int a, int b) {
+void swap(int& a, int& b) {
   int t{a};
   a = b;
   b = t;

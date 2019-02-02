@@ -1,4 +1,4 @@
-__all__ = ['my_sum', 'Point']
+__all__ = ['my_sum', 'Point'] #__all__ does not contain the tests, so that import * does not use tests
 
 def my_sum(a,b):
     return a+b
@@ -14,7 +14,7 @@ class Point:
 
 
 import unittest
-class TestMyModule(unittest.TestCase):
+class TestMyModule(unittest.TestCase): #some class which will contain all the tests that will inherit from unittest.TestCase
     def test_my_sum(self):
         self.assertEqual(my_sum(3,4), 7)
 
@@ -26,6 +26,9 @@ class TestMyModule(unittest.TestCase):
     def test_point_abs(self):
         p = Point(3,4)
         self.assertEqual(abs(p),5)
-
-if __name__ == '__main__':
+        
+if __name__ == '__main__': #Se faccio girare il modulo da solo, non come importato, fai i test. Se viene importato NO
     unittest.main()
+
+    
+#U have to import as usually, but when u run it you have to modify the name of  SEARCH ON THE INTERNET

@@ -12,7 +12,7 @@ class List{
 	
 	T val;
 	std::unique_ptr<Node> next;
-	Node(const T& v, Node* n): val{v}, next{n}{}
+	Node(const T& v, Node* n): val{v}, next{n}{} //custom ctor
 	~Node()=default;
 	};
 	
